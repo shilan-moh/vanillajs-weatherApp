@@ -10,50 +10,61 @@
       integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
       crossorigin="anonymous"
     />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <link rel="stylesheet" href="./src/styles.css" />
     <title>Weather App</title>
   </head>
   <body>
     <div class="container">
-      <div class="weathe">
+      <div class="weather">
+        <!--show logo-->
         <div class="col-12">
           <img src="./images/logo.jpg" class="logo" alt="" />
         </div>
+        <!--the search form-->
         <form class="row mt-4">
           <div class="col-md-7 pe-0">
             <input
+              id="city-input"
               type="text"
               class="city-input"
               placeholder="Enter a City Name:"
             />
           </div>
           <div class="col-md-5">
-            <button type="button" class="btn search-btn">Search</button>
+            <button type="button" class="btn search-btn" id="search-btn">
+              Search
+            </button>
             <button type="button" class="btn current-btn">Current</button>
           </div>
         </form>
-
+        <!--show degree and description in the left of the container-->
         <div class="row">
-          <div class="col-6 show-degree">
+          <div class="col-7 show-degree">
             <img
+              id="weather-img"
               src="https://ssl.gstatic.com/onebox/weather/64/partly_cloudy.png"
             />
             <div class="degree">
-              <div class="degree-number">8</div>
+              <div class="degree-number" id="degree-number">8</div>
               <span class="unit">°C|°F</span>
             </div>
             <ul>
-              <li>Precipitation: 20%</li>
-              <li>Humidity: 96%</li>
-              <li>Wind: 4 m/s</li>
+              <li id="description">partly cloudy</li>
+              <li id="humidity">Humidity: 96%</li>
+              <li id="wind">Wind: 4 m/s</li>
             </ul>
           </div>
-          <div class="col-6 city-name pe-4">
-            <h1>Stockholm</h1>
-
+          <!--show the city name and description on the right side of container-->
+          <div class="col-5 city-name pe-4">
+            <h1 id="city-name">Stockholm</h1>
             <ul>
-              <li>Saturday</li>
-              <li>partly cloudy</li>
+              <li>
+                <span id="week-day"></span> <span id="hour"></span>:<span
+                  id="minutes"
+                ></span>
+                <span id="country"></span>
+              </li>
             </ul>
           </div>
         </div>

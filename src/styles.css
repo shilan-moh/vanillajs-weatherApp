@@ -33,6 +33,11 @@ form {
   padding-bottom: 30px;
   border-bottom: 1px solid var(--background-color);
 }
+.logo {
+  max-width: 180px;
+  display: block;
+}
+
 .city-input {
   border: none;
   background-color: var(--background-color);
@@ -53,18 +58,14 @@ form {
 }
 
 .container {
-  border: 1px solid #ececec;
-  max-width: 600px;
+  max-width: 700px;
   margin: 50px auto;
-  border-radius: 8px;
-  background-color: white;
-  padding-bottom: 90px;
 }
 .weather {
   background: #fff;
   border-radius: 16px;
   box-shadow: 0 30px 50px rgb(65 50 100 / 8%);
-  padding: 40px;
+  padding: 50px;
 }
 
 .show-degree {
@@ -107,20 +108,9 @@ form {
 }
 .current-btn:hover {
   background-color: white;
-  color: var(--font-color);
+  color: var(--current-btn);
 }
 .search-btn:hover {
-  color: #5f86a5;
+  color: var(--search-btn);
   background-color: white;
-}
-hr {
-  color: rgb(213, 211, 208);
-  width: 80%;
-  margin: 20px auto;
-}
-.logo {
-  max-width: 150px;
-  display: block;
-  margin-bottom: 20px;
-  margin-top: 20px;
 }
