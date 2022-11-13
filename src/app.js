@@ -1,64 +1,69 @@
 // get and set the current time
-function currentTime() {
-  let now = new Date();
+function currentTime(timestamp) {
+  let now = new Date(timestamp);
   let days = [
+    "Sunday",
     "Monday",
     "Tuesday",
     "Wednesday",
     "Thursday",
     "Friday",
     "Saturday",
-    "Sunday",
   ];
-  let day = now.getDay();
-  let weekDays = document.querySelector("#week-day");
-  let hourClock = document.querySelector("#hour");
+  let day = days[now.getDay()];
   let hour = now.getHours();
-  let minutes = document.querySelector("#minutes");
   let min = now.getMinutes();
 
-  weekDays.innerHTML = days[day - 1];
-  if (minutes < 10) {
-    minutes.innerHTML = `0${min}`;
+  if (min < 10) {
+    min = `0${min}`;
   }
-  if (hourClock < 10) {
-    hour.innerHTML = `0${hour}`;
+  if (hour < 10) {
+    hour = `0${hour}`;
   }
-  hourClock.innerHTML = hour;
-  minutes.innerHTML = min;
+  return `${day} ${hour}:${min}`;
 }
 // get weather API based on city name
-function findCityForecast(event) {
-  event.preventDefault();
-  let cityName = document.querySelector("#city-input");
-  city = cityName.value;
-
+function findCityForecast(city) {
   let apiKey = "1fbd79b534o41dc6a309ft90c9e19e98";
   let url = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}`;
   axios.get(url).then(showWeather);
+}
+
+function submitForm(event) {
+  event.preventDefault();
+  let cityName = document.querySelector("#city-input");
+  city = cityName.value;
+  findCityForecast(city);
 }
 
 // set the weather elements based on the findCityForecast responses
 function showWeather(response) {
   let cityName = document.querySelector("#city-name");
   let degreeNumber = document.querySelector("#degree-number");
-  let degree = Math.round(response.data.temperature.current);
+  let temperature = Math.round(response.data.temperature.current);
   let weatherImg = document.querySelector("#weather-img");
   let descrition = document.querySelector("#description");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
-  let country = document.querySelector("#country");
+  let dateElement = document.querySelector("#date");
+  let farenhaitElement = document.querySelector("#farenhait");
+  farenhaitElement.addEventListener("click", changeTempUnit);
 
-  country.innerHTML = response.data.country;
-  wind.innerHTML = `wind:${response.data.wind.speed}km/s`;
-  humidity.innerHTML = `Humidity:${response.data.temperature.humidity}%`;
+  function changeTempUnit(temperature) {
+    let degreeNumber = document.querySelector("#degree-number");
+    degreeNumber.innerHTML = temperature * 2;
+  }
+  dateElement.innerHTML = currentTime(response.data.time * 1000);
+  roundWind = Math.round(response.data.wind.speed);
+  wind.innerHTML = ` ${roundWind} km/s`;
+  humidity.innerHTML = ` ${response.data.temperature.humidity} %`;
   descrition.innerHTML = response.data.condition.description;
   cityName.innerHTML = response.data.city;
-  degreeNumber.innerHTML = degree;
+  degreeNumber.innerHTML = temperature;
   weatherImg.src = response.data.condition.icon_url;
 }
 
-let searchBtn = document.querySelector("#search-btn");
-
+let searchForm = document.querySelector("#search-form");
+searchForm.addEventListener("submit", submitForm);
+findCityForecast("Stockholm");
 currentTime();
-searchBtn.addEventListener("click", findCityForecast);

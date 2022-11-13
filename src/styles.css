@@ -27,14 +27,24 @@ ul {
   padding-left: 9px;
   margin-bottom: 0;
 }
+li::first-letter {
+  text-transform: capitalize;
+}
 form {
   display: block;
   margin-top: 40px;
   padding-bottom: 30px;
   border-bottom: 1px solid var(--background-color);
 }
+.status {
+  font-size: 12px;
+  line-height: 16px;
+}
+.item-result {
+  font-weight: bold;
+}
 .logo {
-  max-width: 180px;
+  max-width: 35%;
   display: block;
 }
 
@@ -91,26 +101,23 @@ form {
   margin-top: 6px;
   vertical-align: top;
 }
-.btn {
+
+.search-btn {
   margin: 0 auto;
   color: white;
   font-weight: bold;
-  padding-right: 5px;
-  width: 47%;
-}
-.search-btn {
+
   background-color: var(--search-btn);
   border: 1px solid var(--search-btn);
-}
-.current-btn {
-  background-color: var(--current-btn);
-  border: 1px solid var(--current-btn);
-}
-.current-btn:hover {
-  background-color: white;
-  color: var(--current-btn);
 }
 .search-btn:hover {
   color: var(--search-btn);
   background-color: white;
+}
+.footer {
+  font-size: 12px;
+}
+.my-website-link {
+  text-decoration: none;
+  color: var(--search-btn);
 }
