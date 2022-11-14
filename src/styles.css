@@ -1,6 +1,6 @@
 :root {
   --search-btn: #10454f;
-  --current-btn: #bde038;
+  --phosphor-green: #90b027;
   --background-color: #d6d6d6;
   --font-color: #8a826e;
   --larg-font-color: #506266;
@@ -16,6 +16,7 @@ h1 {
   margin-bottom: 0;
   color: var(--larg-font-color);
   font-weight: 600;
+  font-size: 2rem;
 }
 
 ul {
@@ -94,7 +95,6 @@ form {
   line-height: 56px;
 }
 .unit {
-  color: var(--larg-font-color);
   display: inline-block;
   font-size: 16px;
   line-height: 24px;
@@ -120,4 +120,20 @@ form {
 .my-website-link {
   text-decoration: none;
   color: var(--search-btn);
+}
+.active {
+  color: var(--larg-font-color);
+  text-decoration: none;
+  cursor: default;
+}
+.active:hover {
+  color: var(--larg-font-color);
+}
+.passive {
+  color: var(--phosphor-green);
+  text-decoration: none;
+  cursor: pointer;
+}
+.passive:hover {
+  color: #504a83;
 }

@@ -40,21 +40,16 @@ function submitForm(event) {
 function showWeather(response) {
   let cityName = document.querySelector("#city-name");
   let degreeNumber = document.querySelector("#degree-number");
-  let temperature = Math.round(response.data.temperature.current);
   let weatherImg = document.querySelector("#weather-img");
   let descrition = document.querySelector("#description");
   let humidity = document.querySelector("#humidity");
   let wind = document.querySelector("#wind");
   let dateElement = document.querySelector("#date");
-  let farenhaitElement = document.querySelector("#farenhait");
-  farenhaitElement.addEventListener("click", changeTempUnit);
+  celsiusTempreture = response.data.temperature.current;
+  let temperature = Math.round(celsiusTempreture);
 
-  function changeTempUnit(temperature) {
-    let degreeNumber = document.querySelector("#degree-number");
-    degreeNumber.innerHTML = temperature * 2;
-  }
   dateElement.innerHTML = currentTime(response.data.time * 1000);
-  roundWind = Math.round(response.data.wind.speed);
+  let roundWind = Math.round(response.data.wind.speed);
   wind.innerHTML = ` ${roundWind} km/s`;
   humidity.innerHTML = ` ${response.data.temperature.humidity} %`;
   descrition.innerHTML = response.data.condition.description;
@@ -63,7 +58,36 @@ function showWeather(response) {
   weatherImg.src = response.data.condition.icon_url;
 }
 
+//convert celisous to farenhait
+function changeTempUnitToFar(event) {
+  event.preventDefault();
+  let degreeNumber = document.querySelector("#degree-number");
+  let temperature = Math.round((celsiusTempreture * 9) / 5 + 32);
+  degreeNumber.innerHTML = temperature;
+  celisous.classList.remove("active");
+  farenhaitElement.classList.add("active");
+  celisous.classList.add("passive");
+  farenhaitElement.classList.remove("passive");
+}
+//convert farenhait to celisous
+function changeTempUnitToCel(event) {
+  event.preventDefault();
+  let degreeNumber = document.querySelector("#degree-number");
+  degreeNumber.innerHTML = Math.round(celsiusTempreture);
+  farenhaitElement.classList.remove("active");
+  farenhaitElement.classList.add("passive");
+
+  celisous.classList.remove("passive");
+  celisous.classList.add("active");
+}
+//
+let celsiusTempreture = null;
 let searchForm = document.querySelector("#search-form");
+let farenhaitElement = document.querySelector("#farenhait");
+let celisous = document.querySelector("#celisous");
+celisous.addEventListener("click", changeTempUnitToCel);
+farenhaitElement.addEventListener("click", changeTempUnitToFar);
+
 searchForm.addEventListener("submit", submitForm);
 findCityForecast("Stockholm");
 currentTime();
