@@ -47,7 +47,7 @@ function showWeather(response) {
   let dateElement = document.querySelector("#date");
   celsiusTempreture = response.data.temperature.current;
   let temperature = Math.round(celsiusTempreture);
-
+  produceForecast();
   dateElement.innerHTML = currentTime(response.data.time * 1000);
   let roundWind = Math.round(response.data.wind.speed);
   wind.innerHTML = ` ${roundWind} km/s`;
@@ -56,6 +56,31 @@ function showWeather(response) {
   cityName.innerHTML = response.data.city;
   degreeNumber.innerHTML = temperature;
   weatherImg.src = response.data.condition.icon_url;
+}
+// fuction to create the daily weather forecast
+function produceForecast() {
+  let forecastElement = document.querySelector("#weather-forecast");
+  let forecastItem = `<div class="row">`;
+  let days = ["Tuse", "Wedn", "Thus", "Fri", "Sat", "Sun"];
+  days.forEach(function (day) {
+    forecastItem =
+      forecastItem +
+      `<div class="col-md-2 forecast-item">
+                <div class="weather-forecast-date">${day}</div>
+                <i class="fa-solid fa-cloud-sun inline-weather-icon"></i>
+                <div>
+                  <span class="forecast-higher-temprature forecast-temp"
+                    >14° </span
+                  ><span class="forecast-lower-temprature forecast-temp"
+                    >8°</span
+                  >
+                </div>
+              </div> 
+  `;
+  });
+
+  forecastItem = forecastItem + `</div>`;
+  forecastElement.innerHTML = forecastItem;
 }
 
 //convert celisous to farenhait

@@ -137,3 +137,25 @@ form {
 .passive:hover {
   color: #504a83;
 }
+.weather-forecast {
+  text-align: center;
+}
+.weather-forecast-date {
+  font-size: 16px;
+  color: var(--larg-font-color);
+  padding-top: 10px;
+}
+.forecast-temp {
+  font-size: 14px;
+  font-weight: normal;
+  line-height: 16px;
+}
+.forecast-higher-temprature {
+  color: var(--search-btn);
+}
+.forecast-item:hover {
+  background-color: #f7fbea;
+  height: 100px;
+  transition: all 200ms ease-in-out;
+  border-radius: 8px;
+}
