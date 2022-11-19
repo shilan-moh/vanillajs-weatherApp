@@ -137,6 +137,8 @@ form {
 .passive:hover {
   color: #504a83;
 }
+/* weather forecast styles*/
+
 .weather-forecast {
   text-align: center;
 }
@@ -154,8 +156,8 @@ form {
   color: var(--search-btn);
 }
 .forecast-item:hover {
-  background-color: #f7fbea;
-  height: 100px;
+  background-color: var(--background-color);
+  height: 115px;
   transition: all 200ms ease-in-out;
   border-radius: 8px;
 }
