@@ -121,22 +121,15 @@ form {
   text-decoration: none;
   color: var(--search-btn);
 }
-.active {
+/*.active {
   color: var(--larg-font-color);
-  text-decoration: none;
   cursor: default;
 }
 .active:hover {
   color: var(--larg-font-color);
-}
-.passive {
-  color: var(--phosphor-green);
   text-decoration: none;
-  cursor: pointer;
-}
-.passive:hover {
-  color: #504a83;
-}
+}*/
+
 /* weather forecast styles*/
 
 .weather-forecast {

@@ -109,7 +109,7 @@ function showWeather(response) {
   getForecatLocation(response.data.coordinates);
 }
 
-//convert celisous to farenhait
+/*//convert celisous to farenhait
 function changeTempUnitToFar(event) {
   event.preventDefault();
   let degreeNumber = document.querySelector("#degree-number");
@@ -118,8 +118,6 @@ function changeTempUnitToFar(event) {
 
   celisous.classList.remove("active");
   farenhaitElement.classList.add("active");
-  celisous.classList.add("passive");
-  farenhaitElement.classList.remove("passive");
 }
 
 //convert farenhait to celisous
@@ -129,21 +127,18 @@ function changeTempUnitToCel(event) {
   degreeNumber.innerHTML = Math.round(celsiusTempreture);
 
   farenhaitElement.classList.remove("active");
-  farenhaitElement.classList.add("passive");
-  celisous.classList.remove("passive");
   celisous.classList.add("active");
 }
+let farenhaitElement = document.querySelector("#farenhait");
+farenhaitElement.addEventListener("click", changeTempUnitToFar);
+
+let celisous = document.querySelector("#celisous");
+celisous.addEventListener("click", changeTempUnitToCel);*/
 
 //
 let celsiusTempreture = null;
 
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", submitForm);
-
-let farenhaitElement = document.querySelector("#farenhait");
-farenhaitElement.addEventListener("click", changeTempUnitToFar);
-
-let celisous = document.querySelector("#celisous");
-celisous.addEventListener("click", changeTempUnitToCel);
 
 findCityForecast("Stockholm");
